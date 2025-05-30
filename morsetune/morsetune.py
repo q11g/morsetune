@@ -10,11 +10,11 @@ class MorseTune:
 
     def __getArrayByMorse(self, code):
         count = int(self.SPS / self.DPS)
-        dot = np.ones(count * 1, np.bool)
-        dash = np.ones(count * 3, np.bool)
-        gap = np.zeros(count * 1, np.bool)
-        char = np.zeros(count * 3, np.bool)
-        word = np.zeros(count * 7, np.bool)
+        dot = np.ones(count * 1, bool)
+        dash = np.ones(count * 3, bool)
+        gap = np.zeros(count * 1, bool)
+        char = np.zeros(count * 3, bool)
+        word = np.zeros(count * 7, bool)
         pieces = []
         wasSpace = False
         wasElement = False
@@ -43,7 +43,7 @@ class MorseTune:
             length += 1
         smoothing = np.concatenate((np.arange(1, length // 2 + 1), np.arange(length // 2 + 1, 0, -1)))
         smoothing = smoothing / np.sum(smoothing)
-        padding = np.zeros(int(self.SPS * self.AUDIO_PADDING) + int((length - 1) / 2), np.bool)
+        padding = np.zeros(int(self.SPS * self.AUDIO_PADDING) + int((length - 1) / 2), bool)
         array = np.concatenate((padding, array, padding)).astype(np.float32)
         array = np.correlate(array, smoothing, 'valid')
         sample = np.arange(len(array))

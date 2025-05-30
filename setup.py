@@ -6,7 +6,7 @@ def readme():
 
 setuptools.setup(
     name="morsetune",
-    version="0.1.2",
+    version="0.1.3",
     description="Convert text to its corresponding Morse Code tune.",
     long_description=readme(),
     long_description_content_type="text/markdown",
