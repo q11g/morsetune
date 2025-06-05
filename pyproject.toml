@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "morsetune"
+version = "0.1.4"
+description = "Convert text to its corresponding Morse Code tune."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Samuel Zhang", email = "qisamuelzhang@hotmail.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+requires-python = ">=3.7"
+dependencies = [
+    "numpy",
+    "IPython"
+]
+
+[project.urls]
+Homepage = "https://github.com/yiyitech/morsetune"
+Repository = "https://github.com/yiyitech/morsetune"
+Issues = "https://github.com/yiyitech/morsetune/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["morsetune*"]
+
+[tool.setuptools.package-data]
+morsetune = ["*.py"] 
