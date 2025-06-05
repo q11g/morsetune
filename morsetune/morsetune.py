@@ -1,4 +1,45 @@
 import numpy as np
+import IPython.display
+
+mapping = {
+    'A': '.-',
+    'B': '-...',
+    'C': '-.-.',
+    'D': '-..',
+    'E': '.',
+    'F': '..-.',
+    'G': '--.',
+    'H': '....',
+    'I': '..',
+    'J': '.---',
+    'K': '-.-',
+    'L': '.-..',
+    'M': '--',
+    'N': '-.',
+    'O': '---',
+    'P': '.--.',
+    'Q': '--.-',
+    'R': '.-.',
+    'S': '...',
+    'T': '-',
+    'U': '..-',
+    'V': '...-',
+    'W': '.--',
+    'X': '-..-',
+    'Y': '-.--',
+    'Z': '--..',
+    '1': '.----',
+    '2': '..---',
+    '3': '...--',
+    '4': '....-',
+    '5': '.....',
+    '6': '-....',
+    '7': '--...',
+    '8': '---..',
+    '9': '----.',
+    '0': '-----',
+    ' ': '/'
+}
 
 class MorseTune:
     SPS = 8000              # samples per second
@@ -56,3 +97,13 @@ class MorseTune:
         audio = self.__getToneByArray(array)
 
         return audio
+    
+def translate(message):
+    return ' '.join(mapping.get(c.upper(), '') for c in message)
+
+def convert(code):
+    morsetune = MorseTune()
+    return morsetune.convert(code)
+
+def play(audio):
+    return IPython.display.Audio(audio, rate=MorseTune.SPS)
