@@ -1,7 +1,7 @@
 import numpy as np
 import IPython.display
 
-mapping = {
+chr2code = {
     'A': '.-',
     'B': '-...',
     'C': '-.-.',
@@ -39,6 +39,46 @@ mapping = {
     '9': '----.',
     '0': '-----',
     ' ': '/'
+}
+
+code2chr = {
+    '.-': 'A',
+    '-...': 'B',
+    '-.-.': 'C',
+    '-..': 'D',
+    '.': 'E',
+    '..-.': 'F',
+    '--.': 'G',
+    '....': 'H',
+    '..': 'I',
+    '.---': 'J',
+    '-.-': 'K',
+    '.-..': 'L',
+    '--': 'M',
+    '-.': 'N',
+    '---': 'O',
+    '.--.': 'P',
+    '--.-': 'Q',
+    '.-.': 'R',
+    '...': 'S',
+    '-': 'T',
+    '..-': 'U',
+    '...-': 'V',
+    '.--': 'W',
+    '-..-': 'X',
+    '-.--': 'Y',
+    '--..': 'Z',
+    '.----': '1',
+    '..---': '2',
+    '...--': '3',
+    '....-': '4',
+    '.....': '5',
+    '-....': '6',
+    '--...': '7',
+    '---..': '8',
+    '----.': '9',
+    '-----': '0',
+    '/': ' '
 }
 
 class MorseTune:
@@ -98,8 +138,19 @@ class MorseTune:
 
         return audio
     
-def translate(message):
-    return ' '.join(mapping.get(c.upper(), '') for c in message)
+def encode(message):
+    return ' '.join(chr2code.get(c.upper(), '') for c in message)
+
+def decode(code):
+    codes = code.split('/') # Split words
+    words = []
+    for code in codes:
+        chrs = code.split() # Split characters
+        word = ''
+        for c in chrs:
+            word += code2chr.get(c, '')
+        words.append(word)
+    return ' '.join(words)
 
 def convert(code):
     morsetune = MorseTune()
